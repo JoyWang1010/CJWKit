@@ -1,2 +1,0 @@
-# CJWKit
-First iOS FrameWork.
