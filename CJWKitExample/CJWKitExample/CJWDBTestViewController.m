@@ -19,6 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 200, self.view.frame.size.width - 40, 20)];
+    label.text = @"请看Debug信息";
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:18.0f];
+    label.textColor = [UIColor redColor];
+    [self.view addSubview:label];
 
     //增
     StudentModel *stu = [[StudentModel alloc] init];
