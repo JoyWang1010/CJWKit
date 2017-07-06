@@ -10,41 +10,20 @@
 
 #define N(url) [CJWHttp manager].urlString(url)
 
-//typedef NS_ENUM(NSInteger, SSLPinningMode) {
-//    SSLPinningModeNone,
-//    SSLPinningModePublicKey,
-//    SSLPinningModeCertificate,
-//};
-
-@class CJWHttp;
-
-typedef CJWHttp *(^CJWHttpChainStringBlock)(NSString *string);
-typedef CJWHttp *(^CJWHttpChainDictionaryBlock)(NSDictionary *dictionary);
-typedef CJWHttp *(^CJWHttpChainTimeIntervalBlock)(NSTimeInterval timeoutInterval);
-typedef void(^CJWHttpChainResponseBlock)(void(^success)(NSData *responseData),void(^failure)(NSError *error));
-
 @interface CJWHttp : NSObject
-
-@property (nonatomic, copy) CJWHttpChainStringBlock urlString;
-@property (nonatomic, copy) CJWHttpChainDictionaryBlock header;
-@property (nonatomic, copy) CJWHttpChainDictionaryBlock parameters;
-@property (nonatomic, copy) CJWHttpChainTimeIntervalBlock timeoutInterval;
-@property (nonatomic, copy) CJWHttpChainStringBlock certificatePath;
 
 + (instancetype)manager;
 
-- (CJWHttpChainStringBlock)urlString;
+- (CJWHttp *(^)(NSString *string))urlString;
 
-- (CJWHttpChainDictionaryBlock)header;
+- (CJWHttp *(^)(NSDictionary *dictionary))header;
 
-- (CJWHttpChainDictionaryBlock)parameters;
+- (CJWHttp *(^)(NSDictionary *dictionary))parameters;
 
-- (CJWHttpChainTimeIntervalBlock)timeoutInterval;
+- (CJWHttp *(^)(NSTimeInterval timeoutInterval))timeoutInterval;
 
-- (CJWHttpChainStringBlock)sslCertificatePath;
+- (CJWHttp *(^)(NSString *string))sslCertificatePath;
 
-//- (CJWHttpChainSSLPinningModeBlock)sslPinningMode;
-
-- (CJWHttpChainResponseBlock)post;
+- (void(^)(void(^success)(NSData *responseData),void(^failure)(NSError *error)))post;
 
 @end

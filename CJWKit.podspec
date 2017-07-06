@@ -7,7 +7,6 @@ Pod::Spec.new do |s|
     s.authors      = {'JoyWang' => '644886889@qq.com'}
     s.platform     = :ios, '8.0'
     s.source       = {:git => 'https://github.com/CoderJoyWang/CJWKit.git', :tag => s.version}
-    s.source_files = 'CJWKit/**/*.{h,m}'
-    s.resource     = 'CJWKit/CJWKit.bundle'
+    s.source_files = 'CJWKit/*'
     s.requires_arc = true
 end

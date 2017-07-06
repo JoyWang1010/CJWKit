@@ -175,13 +175,13 @@ static NSMutableDictionary *class_properties_dict;
 @end
 
 @implementation NSObject (CJWModel)
-- (CJWModelChainDictionaryBlock)modelFromJsonDict {
+- (id(^)(NSDictionary *jsonDictionary))modelFromJsonDict {
     return ^(NSDictionary *jsonDict) {
         return [CJWModelUtil modelFromJsonDict:jsonDict outputModel:[self class]];
     };
 }
 
-- (CJWModelChainArrayBlock)modelArrayFromJsonArray {
+- (id(^)(NSArray *jsonArray))modelArrayFromJsonArray {
     return ^(NSArray *jsonArray) {
         NSMutableArray *tempArray = [NSMutableArray array];
         [jsonArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -191,5 +191,25 @@ static NSMutableDictionary *class_properties_dict;
         return tempArray;
     };
 }
+
+- (id(^)(NSString *jsonString))modelFromJsonString {
+    return ^(NSString *jsonString) {
+        NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error = nil;
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if (error != nil || jsonObject == nil) {
+            return jsonObject;
+        }
+        if ([jsonObject isKindOfClass:[NSDictionary dictionary]]) {
+            jsonObject = self.modelFromJsonDict(jsonObject);
+        }
+        if ([jsonObject isKindOfClass:[NSArray array]]) {
+            jsonObject = self.modelArrayFromJsonArray(jsonObject);
+        }
+        return jsonObject;
+    };
+}
+
+
 
 @end

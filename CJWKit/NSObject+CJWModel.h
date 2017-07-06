@@ -8,12 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef id(^CJWModelChainDictionaryBlock)(NSDictionary *dictionary);
-typedef id(^CJWModelChainArrayBlock)(NSArray *array);
-
 @interface NSObject (CJWModel)
 
-- (CJWModelChainDictionaryBlock)modelFromJsonDict;
-- (CJWModelChainArrayBlock)modelArrayFromJsonArray;
+- (id(^)(NSDictionary *jsonDictionary))modelFromJsonDict;
+- (id(^)(NSArray *jsonArray))modelArrayFromJsonArray;
+- (id(^)(NSString *jsonString))modelFromJsonString;
 
 @end

@@ -10,8 +10,14 @@
 
 @interface CJWHttp () <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 
+
+@property (nonatomic, copy) CJWHttp *(^urlString)(NSString *string);
+@property (nonatomic, copy) CJWHttp *(^header)(NSDictionary *dictionary);
+@property (nonatomic, copy) CJWHttp *(^parameters)(NSDictionary *dictionary);
+@property (nonatomic, copy) CJWHttp *(^timeoutInterval)(NSTimeInterval timeoutInterval);
+@property (nonatomic, copy) CJWHttp *(^certificatePath)(NSString *string);
+
 @property (readwrite, nonatomic, strong) NSMutableURLRequest *request;
-//@property (readwrite, nonatomic, strong) NSDictionary *requestParameters;
 @property (readwrite, nonatomic, copy) NSString *sslCertificatePathString;
 @property (readwrite, nonatomic, strong) NSURLSessionConfiguration *sessionConfigution;
 @property (readwrite, nonatomic, strong) NSOperationQueue *operationQueue;
@@ -42,7 +48,7 @@
     return self;
 }
 
-- (CJWHttpChainStringBlock)urlString {
+- (CJWHttp *(^)(NSString *string))urlString {
     return ^(NSString *urlString) {
         NSParameterAssert(urlString);
         self.request.URL = [NSURL URLWithString:[urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
@@ -50,7 +56,7 @@
     };
 }
 
-- (CJWHttpChainDictionaryBlock)header {
+- (CJWHttp *(^)(NSDictionary *dictionary))header {
     return ^(NSDictionary *header) {
         NSParameterAssert(header);
         [header enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -67,7 +73,7 @@
     };
 }
 
-- (CJWHttpChainDictionaryBlock)parameters {
+- (CJWHttp *(^)(NSDictionary *dictionary))parameters {
     return ^(NSDictionary *parameters) {
         NSParameterAssert(parameters);
         [parameters enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -81,7 +87,7 @@
     };
 }
 
-- (CJWHttpChainTimeIntervalBlock)timeoutInterval {
+- (CJWHttp *(^)(NSTimeInterval timeoutInterval))timeoutInterval {
     return ^(NSTimeInterval timeoutInterval) {
         NSParameterAssert(timeoutInterval);
         self.request.timeoutInterval = timeoutInterval;
@@ -89,7 +95,7 @@
     };
 }
 
-- (CJWHttpChainStringBlock)sslCertificatePath {
+- (CJWHttp *(^)(NSString *string))sslCertificatePath {
     return ^(NSString *sslCertificatePath) {
         NSParameterAssert(sslCertificatePath);
         self.sslCertificatePathString = sslCertificatePath;
@@ -101,7 +107,7 @@
 //    
 //}
 
-- (CJWHttpChainResponseBlock)post {
+- (void(^)(void(^success)(NSData *responseData),void(^failure)(NSError *error)))post {
     return ^(void(^success)(NSData *responseData), void(^failure)(NSError *error)) {
         self.completeWithSuccessHandle = success;
         self.completeWithFailureHandle = failure;

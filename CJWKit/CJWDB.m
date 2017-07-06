@@ -88,11 +88,6 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
         NSString *libraryPath = [paths objectAtIndex:0];
         _databasePath = [libraryPath stringByAppendingPathComponent:_databaseName];
         NSLog(@"_databasePath %@",_databasePath);
-//        //开发数据库，没有自动创建
-//        int err = sqlite3_open([self sqlitePath], (sqlite3**)&_sql);
-//        if (err != SQLITE_OK) {
-//            NSLog(@"error opening!: %d", err);
-//        }
         //设置数据库繁忙时，等待
         if (_maxBusyRetryTimeInterval > 0.0) {
             // set the handler
