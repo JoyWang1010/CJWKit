@@ -33,17 +33,25 @@ static const void *scrollWasEnabledKey = &scrollWasEnabledKey;
         if (self.placeHolderView == nil) {
             self.placeHolderView = [self defaultPlaceholderView];
         }
+        [self addSubview:self.placeHolderView];
         [self checkEmpty];
     };
 }
 
 - (void(^)(UIView *(^placeholder)(UIView *view)))cjw_reloadDataWithView {
     return ^(UIView *(^placeholder)(UIView *view)) {
+        //判断传入类是否是UICollectionView或UITableView，不是不予执行下面的代码
+        if ([self recognitionClass] == nil) {
+            return;
+        }
+        [[self recognitionClass] reloadData];
         if (self.placeHolderView == nil) {
             self.placeHolderView = [[UIView alloc] initWithFrame:self.bounds];
             self.placeHolderView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
         }
         self.placeHolderView = placeholder(self.placeHolderView);
+        [self addSubview:self.placeHolderView];
+        [self checkEmpty];
     };
 }
 
@@ -103,30 +111,24 @@ static const void *scrollWasEnabledKey = &scrollWasEnabledKey;
             }
         }
     }
-    if (!isEmpty != !self.placeHolderView) {        //isempty为NO placeHolderView存在或者isempty为YES placeHolderView不存在
-        //数据为空，需要展示placeholder
-        if (isEmpty) {                              //没有placeholder，在view上添加一个
-            self.scrollWasEnabled = self.scrollEnabled;//记录view的原滑动状态
-            //把placehodler显示在headerview和footerview之外的位置
-            if ([[self recognitionClass] isMemberOfClass:[UICollectionView class]]) {
-                UICollectionView *collectionView = (UICollectionView *)self;
-                UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)collectionView.collectionViewLayout;
-                CGSize headerViewSize = flowLayout.headerReferenceSize;
-                self.placeHolderView.frame = CGRectMake(0, headerViewSize.height, self.frame.size.width, self.frame.size.height - headerViewSize.height);
-                [self addSubview:self.placeHolderView];
-            }else if ([[self recognitionClass] isMemberOfClass:[UITableView class]]) {
-                UITableView *tableView = (UITableView *)self;
-                self.placeHolderView.frame = CGRectMake(0, tableView.tableHeaderView.frame.size.height, self.frame.size.width, self.frame.size.height - tableView.tableHeaderView.frame.size.height - tableView.tableFooterView.frame.size.height);
-                [self addSubview:self.placeHolderView];
-            }
-        }else {                                     //存在placeholder，已经加载出数据，需把placeholder移除
-            self.scrollEnabled = self.scrollEnabled;//恢复原view的滑动状态
-            [self.placeHolderView removeFromSuperview];
-            self.placeHolderView = nil;
-        }
-    }else if (isEmpty) {                            //isempty为YES placeHolderView存在
-        //把placeholder置于最上层
+    if (isEmpty) {                              //数据为空，需要展示placeholder
+        self.scrollWasEnabled = self.scrollEnabled;//记录view的原滑动状态
+        self.scrollEnabled = NO;
         [self bringSubviewToFront:self.placeHolderView];
+        //把placehodler显示在headerview和footerview之外的位置
+        if ([[self recognitionClass] isMemberOfClass:[UICollectionView class]]) {
+            UICollectionView *collectionView = (UICollectionView *)self;
+            UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)collectionView.collectionViewLayout;
+            CGSize headerViewSize = flowLayout.headerReferenceSize;
+            self.placeHolderView.frame = CGRectMake(0, headerViewSize.height, self.frame.size.width, self.frame.size.height - headerViewSize.height);
+        }else if ([[self recognitionClass] isMemberOfClass:[UITableView class]]) {
+            UITableView *tableView = (UITableView *)self;
+            self.placeHolderView.frame = CGRectMake(0, tableView.tableHeaderView.frame.size.height, self.frame.size.width, self.frame.size.height - tableView.tableHeaderView.frame.size.height - tableView.tableFooterView.frame.size.height);
+        }
+    }else {                                     //存在placeholder，已经加载出数据，需把placeholder移除
+        self.scrollEnabled = self.scrollEnabled;//恢复原view的滑动状态
+        [self.placeHolderView removeFromSuperview];
+        self.placeHolderView = nil;
     }
 }
 
