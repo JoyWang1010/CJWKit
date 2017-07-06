@@ -25,7 +25,7 @@
 
     self.view.startLoad(AnimationTypeCiecle);
 
-    repeatCount = 1;
+    repeatCount = 0;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(changeAnimation) userInfo:nil repeats:YES];
 
 }

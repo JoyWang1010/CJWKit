@@ -27,7 +27,6 @@
 		82AA8D961F0DE38200D87297 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82AA8D951F0DE38200D87297 /* TestModel.m */; };
 		82B247BD1F00A94700DB1ECC /* CJWDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B247B71F00A94700DB1ECC /* CJWDB.m */; };
 		82B247BE1F00A94700DB1ECC /* CJWHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B247B91F00A94700DB1ECC /* CJWHttp.m */; };
-		82B247BF1F00A94700DB1ECC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 82B247BA1F00A94700DB1ECC /* LICENSE */; };
 		82B247C01F00A94700DB1ECC /* NSObject+CJWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B247BC1F00A94700DB1ECC /* NSObject+CJWModel.m */; };
 		82C1609A1F065261008381EF /* UIView+LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C160991F065261008381EF /* UIView+LoadView.m */; };
 		82F66FC01F0C7D2D00C4C513 /* CJWLoadAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F66FBF1F0C7D2D00C4C513 /* CJWLoadAnimation.m */; };
@@ -91,7 +90,6 @@
 		82B247B71F00A94700DB1ECC /* CJWDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJWDB.m; sourceTree = "<group>"; };
 		82B247B81F00A94700DB1ECC /* CJWHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJWHttp.h; sourceTree = "<group>"; };
 		82B247B91F00A94700DB1ECC /* CJWHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJWHttp.m; sourceTree = "<group>"; };
-		82B247BA1F00A94700DB1ECC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		82B247BB1F00A94700DB1ECC /* NSObject+CJWModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CJWModel.h"; sourceTree = "<group>"; };
 		82B247BC1F00A94700DB1ECC /* NSObject+CJWModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CJWModel.m"; sourceTree = "<group>"; };
 		82C160981F065261008381EF /* UIView+LoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LoadView.h"; sourceTree = "<group>"; };
@@ -227,7 +225,6 @@
 				82B247B71F00A94700DB1ECC /* CJWDB.m */,
 				82B247B81F00A94700DB1ECC /* CJWHttp.h */,
 				82B247B91F00A94700DB1ECC /* CJWHttp.m */,
-				82B247BA1F00A94700DB1ECC /* LICENSE */,
 				82B247BB1F00A94700DB1ECC /* NSObject+CJWModel.h */,
 				82B247BC1F00A94700DB1ECC /* NSObject+CJWModel.m */,
 			);
@@ -364,7 +361,6 @@
 				82A9676C1EF7D57800CF21B6 /* Assets.xcassets in Resources */,
 				82A9679A1EF94CB800CF21B6 /* server.cer in Resources */,
 				82A9676A1EF7D57800CF21B6 /* Main.storyboard in Resources */,
-				82B247BF1F00A94700DB1ECC /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

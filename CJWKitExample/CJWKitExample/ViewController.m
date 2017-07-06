@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"CJWKit";
     self.view.backgroundColor = [UIColor whiteColor];
     
     NSArray *kitArr = @[@"数据库读写",@"网络请求",@"json转model",@"加载动画",@"静态tableView",@"tableView和collectionView的空数据视图"];
