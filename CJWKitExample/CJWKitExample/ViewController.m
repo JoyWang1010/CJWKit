@@ -13,6 +13,7 @@
 #import "CJWLoadAnimationTestViewController.h"
 #import "CJWStaticTableViewTestViewController.h"
 #import "CJWTableViewPlaceholderTestViewController.h"
+#import "CJWRunLoopTestViewController.h"
 
 @interface ViewController ()
 
@@ -25,7 +26,7 @@
     self.title = @"CJWKit";
     self.view.backgroundColor = [UIColor whiteColor];
     
-    NSArray *kitArr = @[@"数据库读写",@"网络请求",@"json转model",@"加载动画",@"静态tableView",@"tableView和collectionView的空数据视图"];
+    NSArray *kitArr = @[@"数据库读写",@"网络请求",@"json转model",@"加载动画",@"静态tableView",@"tableView和collectionView的空数据视图",@"可释放RunLoop"];
     for (int i = 0; i < kitArr.count; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(20, 100 + 50*i, self.view.frame.size.width - 40, 44);
@@ -59,6 +60,9 @@
             break;
         case 5:
             vc = [[CJWTableViewPlaceholderTestViewController alloc] init];
+            break;
+        case 6:
+            vc = [[CJWRunLoopTestViewController alloc] init];
             break;
         default:
             break;

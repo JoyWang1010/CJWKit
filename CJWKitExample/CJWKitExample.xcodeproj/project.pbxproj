@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		387932E62770B40A0088433A /* CJWRunLoopTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 387932E52770B40A0088433A /* CJWRunLoopTestViewController.m */; };
+		387932E92770B4640088433A /* CJWThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 387932E82770B4640088433A /* CJWThread.m */; };
 		8269A97C1EFBA1D300D11646 /* StudentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8269A97B1EFBA1D300D11646 /* StudentModel.m */; };
 		82A967611EF7D57800CF21B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A967601EF7D57800CF21B6 /* main.m */; };
 		82A967641EF7D57800CF21B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A967631EF7D57800CF21B6 /* AppDelegate.m */; };
@@ -52,6 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		387932E42770B40A0088433A /* CJWRunLoopTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJWRunLoopTestViewController.h; sourceTree = "<group>"; };
+		387932E52770B40A0088433A /* CJWRunLoopTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJWRunLoopTestViewController.m; sourceTree = "<group>"; };
+		387932E72770B4640088433A /* CJWThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CJWThread.h; sourceTree = "<group>"; };
+		387932E82770B4640088433A /* CJWThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CJWThread.m; sourceTree = "<group>"; };
 		8269A97A1EFBA1D300D11646 /* StudentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentModel.h; sourceTree = "<group>"; };
 		8269A97B1EFBA1D300D11646 /* StudentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentModel.m; sourceTree = "<group>"; };
 		82A9675C1EF7D57800CF21B6 /* CJWKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CJWKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +180,8 @@
 				82AA8D921F0DD36900D87297 /* CJWStaticTableViewTestViewController.m */,
 				82AA8D8E1F0DD35000D87297 /* CJWTableViewPlaceholderTestViewController.h */,
 				82AA8D8F1F0DD35000D87297 /* CJWTableViewPlaceholderTestViewController.m */,
+				387932E42770B40A0088433A /* CJWRunLoopTestViewController.h */,
+				387932E52770B40A0088433A /* CJWRunLoopTestViewController.m */,
 				82A967681EF7D57800CF21B6 /* Main.storyboard */,
 				82A9676B1EF7D57800CF21B6 /* Assets.xcassets */,
 				82A9676D1EF7D57800CF21B6 /* LaunchScreen.storyboard */,
@@ -227,6 +235,8 @@
 				82B247B91F00A94700DB1ECC /* CJWHttp.m */,
 				82B247BB1F00A94700DB1ECC /* NSObject+CJWModel.h */,
 				82B247BC1F00A94700DB1ECC /* NSObject+CJWModel.m */,
+				387932E72770B4640088433A /* CJWThread.h */,
+				387932E82770B4640088433A /* CJWThread.m */,
 			);
 			name = CJWKit;
 			path = ../CJWKit;
@@ -337,6 +347,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -391,9 +402,11 @@
 				8269A97C1EFBA1D300D11646 /* StudentModel.m in Sources */,
 				82F6700B1F0CE02C00C4C513 /* UIScrollView+CJWPlaceholder.m in Sources */,
 				82AA8D901F0DD35000D87297 /* CJWTableViewPlaceholderTestViewController.m in Sources */,
+				387932E62770B40A0088433A /* CJWRunLoopTestViewController.m in Sources */,
 				82A967671EF7D57800CF21B6 /* ViewController.m in Sources */,
 				82AA8D931F0DD36900D87297 /* CJWStaticTableViewTestViewController.m in Sources */,
 				82F6700E1F0CFB2700C4C513 /* UITableView+CJWStaticTableView.m in Sources */,
+				387932E92770B4640088433A /* CJWThread.m in Sources */,
 				82B247BE1F00A94700DB1ECC /* CJWHttp.m in Sources */,
 				82AA8D961F0DE38200D87297 /* TestModel.m in Sources */,
 				82F66FC01F0C7D2D00C4C513 /* CJWLoadAnimation.m in Sources */,
